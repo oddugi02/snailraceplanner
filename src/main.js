@@ -223,8 +223,13 @@ controls.target.set(0, 0, -40);
 /* =========================
    Lights
 ========================= */
-scene.add(new THREE.DirectionalLight(0xffffff, 1).position.set(30, 60, 20));
-scene.add(new THREE.AmbientLight(0xffffff, 0.85));
+const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+dirLight.position.set(30, 60, 20);
+scene.add(dirLight);
+
+const ambLight = new THREE.AmbientLight(0xffffff, 0.85);
+scene.add(ambLight);
+
 
 /* =========================
    Track
