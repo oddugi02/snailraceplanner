@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>달팽이 레이스 플래너</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+
+</head>
+
+<body>
+    <div id="app"></div>
+
+
+    <div id="ui-container">
+
+        <button id="add-task-btn" class="ui-button">
+            + 일정 추가하기
+        </button>
+
+        <button id="history-btn" class="ui-button">
+            📅 History 보기
+        </button>
+        <button id="tasks-btn" class="ui-button">
+            🧾 일정 목록
+        </button>
+
+        <div id="tasks-panel" class="ui-panel hidden">
+            <h3>일정 목록</h3>
+            <ul id="tasks-list"></ul>
+            <button class="close-btn"
+                onclick="document.getElementById('tasks-panel').classList.add('hidden')">닫기</button>
+        </div>
+
+        <div id="history-panel" class="ui-panel hidden">
+            <h3>달팽이 레이스 History</h3>
+            <ul id="history-list">
+            </ul>
+            <button class="close-btn"
+                onclick="document.getElementById('history-panel').classList.add('hidden')">닫기</button>
+        </div>
+
+        <div id="task-form-modal" class="ui-modal hidden">
+            <div class="modal-content">
+                <h3>새로운 달팽이 등록</h3>
+                <form id="task-form">
+                    <label for="task-title">할 일 제목:</label>
+                    <input type="text" id="task-title" required>
+
+                    <label>마감 요일 (이번 주):</label>
+                    <div id="day-picker" class="day-picker">
+                        <button type="button" class="day-btn" data-day="0">월</button>
+                        <button type="button" class="day-btn" data-day="1">화</button>
+                        <button type="button" class="day-btn" data-day="2">수</button>
+                        <button type="button" class="day-btn" data-day="3">목</button>
+                        <button type="button" class="day-btn" data-day="4">금</button>
+                        <button type="button" class="day-btn" data-day="5">토</button>
+                        <button type="button" class="day-btn" data-day="6">일</button>
+                    </div>
+                    <input type="hidden" id="task-day" value="0" />
+
+
+                    <label class="time-toggle-label">
+                        <input type="checkbox" id="enable-time"> 시간 설정 켜기
+                    </label>
+
+                    <div id="time-inputs" class="hidden">
+                        <label for="task-hour">시간:</label>
+                        <input type="number" id="task-hour" min="0" max="23" value="23">
+                        <label for="task-minute">분:</label>
+                        <input type="number" id="task-minute" min="0" max="59" value="59">
+                    </div>
+
+                    <button type="submit" class="primary-btn">달팽이 준비</button>
+                    <button type="button" class="cancel-btn"
+                        onclick="document.getElementById('task-form-modal').classList.add('hidden')">취소</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="notification-area">
+        </div>
+
+    </div>
+
+    <div id="info-panel">
+        <h1>달팽이 레이스 플래너</h1>
+        <p>빠르게 다가오는 일정에 불안한 사람들을 위해 '플래너'를 변주하여 제작한 아주 느린 달팽이 레이스입니다. 달팽이들이 안 움직이는것 같지만 1~2mm씩 여러분에게 다가오고 있으며 이 무해한 존재들은
+            여러분에게 어떠한 압박도 주지 않습니다.</p>
+    </div>
+
+    <div id="tooltip"></div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.min.js"></script>
+    <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
