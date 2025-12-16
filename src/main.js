@@ -231,6 +231,7 @@ const ambLight = new THREE.AmbientLight(0xffffff, 0.85);
 scene.add(ambLight);
 
 
+
 /* =========================
    Track
 ========================= */
@@ -627,7 +628,8 @@ function createSnail(task, idx) {
 ========================= */
 (async () => {
     try {
-        const rawScene = await new GLTFLoader().loadAsync('/snail.glb');
+        const rawScene = await new GLTFLoader().loadAsync(`${import.meta.env.BASE_URL}snail.glb`);
+
         const sceneToExtract = rawScene.scene || rawScene;
         snailTemplate = extractRenderableRoot(sceneToExtract);
     } catch (e) {
